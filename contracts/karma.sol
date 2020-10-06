@@ -25,18 +25,4 @@ contract Karma {
 	function getBalance(address addr) public view returns(uint) {
 		return balances[addr];
 	}
-
-    //claim a task
-address[16] public neighbors;
-
-function claim(uint taskId) public returns (uint) {
-    require(taskId >= 0 && taskId <= 15);
-    neighbors[taskId] = msg.sender;
-    return taskId;
-}
-// Retrieving the tasks
-function getNeighbors() public view returns (address[16] memory) {
-  return neighbors;
-}
-
 }

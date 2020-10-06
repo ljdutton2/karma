@@ -1,5 +1,5 @@
-var Neighbors = artifacts.require("Neighbors");
+var Karma = artifacts.require("Karma");
 
 module.exports = function(deployer) {
-  deployer.deploy(Neighbors);
+  deployer.deploy(Karma);
 };

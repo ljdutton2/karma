@@ -77,7 +77,7 @@ App.contracts.Karma.deployed().then(function(instance) {
 }).then(function(Karma) {
   for (i = 0; i < Karma.length; i++) {
     if (Karma[i] !== '0x0000000000000000000000000000000000000000') {
-      $('.panel-task').eq(i).find('button').text('Claimed').attr('disabled', true);
+      $('.panel-task').eq(i).find('button').text('Claim').attr('disabled', true);
     }
   }
 }).catch(function(err) {
@@ -107,7 +107,19 @@ web3.eth.getAccounts(function(error, accounts) {
   });
 });
 
-  }
+  },
+  sendCoin: async function() {
+    const amount = parseInt(document.getElementById("amount").value);
+    const receiver = document.getElementById("receiver").value;
+
+    this.setStatus("Initiating transaction... (please wait)");
+
+    const { sendCoin } = this.meta.methods;
+    await sendCoin(receiver, amount).send({ from: this.account });
+
+    this.setStatus("Transaction complete!");
+    this.refreshBalance();
+  },
 
 };
 
