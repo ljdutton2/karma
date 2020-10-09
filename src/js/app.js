@@ -1,3 +1,6 @@
+const ganache = require("ganache-core");
+web3.setProvider(ganache.provider());
+
 App = {
   web3Provider: null,
   contracts: {},
